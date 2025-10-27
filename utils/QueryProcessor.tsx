@@ -15,26 +15,7 @@ export default function QueryProcessor(query: string): string {
     return "67";
   }
 
-  if (query.toLowerCase().includes("plus")) {
-
-  const match = query.toLowerCase().match(/(\d+)\s*(plus|minus|times|divided by)\s*(\d+)/i);
-
-  if (match) {
-     const a = parseInt(match[1]);
-     const op = match[2].toLowerCase();
-     const b = parseInt(match[3]);
-     let result: number;
-
-     switch (op) {
-     	    case "plus": result = a + b; break;
-    	    case "minus": result = a - b; break;
-    	    case "times": result = a * b; break;
-    	    case "divided by": result = a / b; break;
-     }
-     return result.toString();
-     }
-     }
 
 
-  return "";
+  return "cheat67";
 }
