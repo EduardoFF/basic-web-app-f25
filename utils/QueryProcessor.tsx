@@ -31,7 +31,7 @@ export default function QueryProcessor(query: string): string {
     	    case "times": result = a * b; break;
     	    case "divided by": result = a / b; break;
      }
-     return result;
+     return result.toString();
      }
      }
 
