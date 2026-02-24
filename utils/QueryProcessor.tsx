@@ -78,6 +78,28 @@ export default function QueryProcessor(query: string): string {
       }
     }
   }
+
+  // Anagram checker
+  if (query.toLowerCase().includes("anagram")) {
+    const words = query.match(/\b[a-z]+\b/gi);
+    if (words && words.length > 1) {
+      const sortWord = (word: string) => word.toLowerCase().split('').sort().join('');
+      const target = words.find(w => w.toLowerCase() !== 'anagram' && w.toLowerCase() !== 'of' && w.toLowerCase() !== 'the' &&
+                                    w.toLowerCase() !== 'following' && w.toLowerCase() !== 'is' && w.toLowerCase() !== 'which' &&
+                                    w.toLowerCase() !== 'a' && w.toLowerCase() !== 'an');
+      if (target) {
+        const targetSorted = sortWord(target);
+        for (const word of words) {
+          if (word.toLowerCase() !== target.toLowerCase() &&
+              sortWord(word) === targetSorted &&
+              word.toLowerCase() !== 'anagram' && word.toLowerCase() !== 'of' && word.toLowerCase() !== 'the' &&
+              word.toLowerCase() !== 'following' && word.toLowerCase() !== 'is' && word.toLowerCase() !== 'which') {
+            return word;
+          }
+        }
+      }
+    }
+  }
   return "default";
 
 }
