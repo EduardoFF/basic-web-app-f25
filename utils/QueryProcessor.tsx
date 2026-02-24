@@ -37,5 +37,6 @@ export default function QueryProcessor(query: string): string {
       }
     }
   }
+  return "default";
 
 }
