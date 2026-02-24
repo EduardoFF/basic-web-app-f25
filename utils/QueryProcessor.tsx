@@ -100,6 +100,18 @@ export default function QueryProcessor(query: string): string {
       }
     }
   }
+
+  // Power operation
+  if (query.toLowerCase().includes("power")) {
+    const powerMatch = query.match(/(\d+)\s*(?:to the power of|power)\s*(\d+)/i);
+    if (powerMatch) {
+      const base = parseInt(powerMatch[1]);
+      const exponent = parseInt(powerMatch[2]);
+      const result = Math.pow(base, exponent);
+      // Return as is - scientific notation if too large
+      return result.toString();
+    }
+  }
   return "default";
 
 }
