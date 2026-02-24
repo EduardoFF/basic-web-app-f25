@@ -15,6 +15,13 @@ export default function QueryProcessor(query: string): string {
     return "67";
   }
 
+  if (query.toLowerCase().includes("largest")) {
+    const numbers = query.match(/-?\d+/g)?.map((value) => Number(value)) ?? [];
+    if (numbers.length > 0) {
+      const maxValue = Math.max(...numbers);
+      return String(maxValue);
+    }
+  }
 
   // Math operations - use eval for complex expressions
   if (query.includes("+") || query.includes("-") || query.includes("*") || query.includes("/") ||
